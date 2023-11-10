@@ -17,6 +17,7 @@ const config: Config = {
       lightGrey: "hsl(220, 38%, 97%)",
       white: "hsl(0, 0%, 100%)",
       green: "hsl(151, 70%, 50%)",
+      red: "hsl(0, 82%, 63%)",
     },
     fontSize: {
       display: [
@@ -49,6 +50,13 @@ const config: Config = {
       ],
       headingS: [
         "1.75rem",
+        {
+          lineHeight: "100%",
+          fontWeight: "500",
+        },
+      ],
+      headingXS: [
+        "1.125rem",
         {
           lineHeight: "100%",
           fontWeight: "500",
