@@ -14,7 +14,7 @@ const Button = <T extends ElementType = "button">({
   return (
     <button
       {...rest}
-      className="bg-purple text-headingM text-white py-8 w-full rounded-[2rem] shadow-[0px_16px_40px_0px_rgba(143,_160,_193,_0.14)] hover:bg-opacity-50"
+      className="bg-purple text-headingXS sm:text-headingM text-white py-4 sm:py-8 w-full rounded-xl sm:rounded-3xl shadow-[0px_16px_40px_0px_rgba(143,_160,_193,_0.14)] hover:bg-opacity-50"
     >
       {children}
     </button>

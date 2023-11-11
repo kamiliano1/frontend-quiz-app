@@ -42,7 +42,7 @@ const config: Config = {
         },
       ],
       headingM: [
-        "1.5rem",
+        "2.25rem",
         {
           lineHeight: "100%",
           fontWeight: "500",
