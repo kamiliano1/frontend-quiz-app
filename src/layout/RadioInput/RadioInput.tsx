@@ -1,11 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { SVGProps, useEffect, useState } from "react";
 import * as RadioGroup from "@radix-ui/react-radio-group";
-import { AiOutlineCheckCircle } from "react-icons/ai";
 import { VscError } from "react-icons/vsc";
 import Button from "../Button/Button";
 import { useRecoilValue } from "recoil";
 import { currentThemeState } from "@/atoms/themeSwitcherAtom";
+import SingleRadio from "./SingleRadio";
+import { LuPaintbrush2 } from "react-icons/lu";
+import { RiJavascriptLine } from "react-icons/ri";
+import { AccessibilityIcon } from "../../../public/icons/AccessibilityIcon";
 type RadioInputProps = {};
+
+const HtmlHint = (props: SVGProps<SVGSVGElement>) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 32 32"
+      {...props}
+    >
+      <path
+        fill="#e44f26"
+        d="m10.04 18.875l-7.991-4.116v-1.531l7.991-4.117v2.381l-4.988 2.501l4.988 2.5v2.382zm7.273.195H15.03l4.543-11.803h2.299L17.313 19.07zm4.647-.198v-2.38l5.023-2.499l-5.023-2.499V9.113l7.991 4.099v1.562l-7.991 4.098z"
+      ></path>
+    </svg>
+  );
+};
 
 const questions = {
   question: "What does HTML stand for?",
@@ -18,92 +38,12 @@ const questions = {
   answer: "Hyper Text Markup Language",
 };
 
-type RadioItemType = {
-  setActiveRadio: React.Dispatch<React.SetStateAction<string>>;
-  activeRadio: string;
-  value: string;
-  isCorrectAnswer: boolean;
-  isAnswerSubmitted: boolean;
-  answerLetter: string;
-};
-
 const answerLetters = [
   "after:content-['A']",
   "after:content-['B']",
   "after:content-['C']",
   "after:content-['D']",
 ];
-
-const RadioItem = ({
-  setActiveRadio,
-  activeRadio,
-  value,
-  isCorrectAnswer,
-  isAnswerSubmitted,
-  answerLetter,
-}: RadioItemType) => {
-  const activeTheme = useRecoilValue(currentThemeState);
-  const [isHover, setIsHover] = useState(false);
-  const isActive = activeRadio === value;
-  const activeAnswer = () => {
-    if (!isAnswerSubmitted) {
-      setActiveRadio(value);
-    }
-  };
-  return (
-    <div
-      onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
-      onClick={activeAnswer}
-      className={`flex items-center rounded-xl sm:rounded-[1.5rem] shadow-[0px_16px_40px_0px_rgba(143,_160,_193,_0.14)] bg-white text-darkNavy p-3 lg:py-[18px] lg:px-5 border-[3px] data-[state=checked]:bg-purple 
-      ${
-        activeTheme.isDarkMode
-          ? "bg-navy text-white border-navy"
-          : "bg-white text-darkNavy border-white"
-      }
-      ${isAnswerSubmitted && isCorrectAnswer && isActive && "border-green"}
-      ${isAnswerSubmitted && !isCorrectAnswer && isActive && "border-red"}
-        `}
-    >
-      <RadioGroup.Item
-        className={`bg-lightGrey w-[40px] h-[40px] sm:w-[56px] sm:h-[56px] after:text-headingXS sm:after:text-headingM 
-        ${answerLetter} after:text-greyNavy outline-none cursor-default rounded-lg 
-        ${
-          isAnswerSubmitted &&
-          isCorrectAnswer &&
-          isActive &&
-          "bg-[rgba(38,_215,_130,_1)]"
-        }
-        ${isAnswerSubmitted && !isCorrectAnswer && isActive && "bg-red"}
-        ${
-          isHover &&
-          !isActive &&
-          !isAnswerSubmitted &&
-          "bg-purple bg-opacity-40 after:text-purple"
-        }
-        ${isActive && "bg-purple after:text-white"}
-        `}
-        value={value}
-        id={value}
-      ></RadioGroup.Item>
-      <label
-        className="text-headingXS sm:text-headingS leading-none pl-4 sm:pl-8"
-        htmlFor={value}
-      >
-        {value}
-      </label>
-      {isAnswerSubmitted && isCorrectAnswer && isActive && (
-        <AiOutlineCheckCircle className="text-[2rem] text-green ml-auto" />
-      )}
-      {isAnswerSubmitted && isActive && !isCorrectAnswer && (
-        <VscError className="text-[2rem] text-red ml-auto" />
-      )}
-      {isAnswerSubmitted && isCorrectAnswer && !isActive && (
-        <AiOutlineCheckCircle className="text-[2rem] text-green ml-auto" />
-      )}
-    </div>
-  );
-};
 
 const RadioInput: React.FC<RadioInputProps> = () => {
   const activeTheme = useRecoilValue(currentThemeState);
@@ -123,7 +63,7 @@ const RadioInput: React.FC<RadioInputProps> = () => {
   const printedQuestion = questions.options.map((item, id) => {
     const isCorrect = questions.answer === item;
     return (
-      <RadioItem
+      <SingleRadio
         key={id}
         setActiveRadio={setActiveRadio}
         activeRadio={activeRadio}
@@ -131,6 +71,7 @@ const RadioInput: React.FC<RadioInputProps> = () => {
         isCorrectAnswer={isCorrect}
         isAnswerSubmitted={checkAnswer}
         answerLetter={answerLetters[id]}
+        activeTheme={activeTheme}
       />
     );
   });
@@ -148,6 +89,8 @@ const RadioInput: React.FC<RadioInputProps> = () => {
       <Button type="button" onClick={submitAnswer}>
         Submit Answer
       </Button>
+      <HtmlHint className="text-[5rem]" />
+      <p className="text-[rgba(255,_126,_53,_1)] text-[28px]">{`</>`}</p>
       {isError && (
         <div className="flex items-center justify-center mt-3">
           <VscError className="text-[2rem] text-red" />
