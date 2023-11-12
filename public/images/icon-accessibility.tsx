@@ -1,6 +1,6 @@
 import { SVGProps } from "react";
 
-export function AccessibilityIcon(props: SVGProps<SVGSVGElement>) {
+export const AccessibilityIcon = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -27,4 +27,4 @@ export function AccessibilityIcon(props: SVGProps<SVGSVGElement>) {
       ></path>
     </svg>
   );
-}
+};

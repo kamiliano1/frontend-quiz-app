@@ -10,23 +10,22 @@ const ThemeSwitch: React.FC<ThemeSwitchProps> = () => {
   const [activeTheme, setActiveTheme] = useRecoilState(currentThemeState);
   return (
     <div
-      className={`flex items-center ${
-        activeTheme.isDarkMode ? "text-white" : "text-greyNavy"
-      }`}
+      className={`flex items-center justify-end
+      ${activeTheme.isDarkMode ? "text-white" : "text-greyNavy"}`}
     >
-      <label className="" htmlFor="theme-switcher">
+      <label htmlFor="theme-switcher">
         <BiSun />
       </label>
       <Switch.Root
         checked={activeTheme.isDarkMode}
         title="theme-switcher"
-        className="bg-purple w-[48px] mx-4 h-[28px] rounded-full relative data-[state=checked]:bg-black outline-none cursor-default"
+        className="bg-purple w-[32px] sm:w-[48px] mx-2 sm:mx-4 h-[20px] sm:h-[28px] rounded-full relative data-[state=checked]:bg-black outline-none cursor-default"
         id="theme-switcher"
         onCheckedChange={(state) => setActiveTheme({ isDarkMode: state })}
       >
-        <Switch.Thumb className="ml-[2px] mb-[1px] block w-5 h-5 bg-white rounded-full transition-transform duration-100 translate-x-0.5 will-change-transform data-[state=checked]:translate-x-[22px]" />
+        <Switch.Thumb className="ml-[2px] sm:mb-[1px] block w-3 sm:w-5 h-3 sm:h-5 bg-white rounded-full transition-transform duration-100 translate-x-0.5 will-change-transform data-[state=checked]:translate-x-[15px] sm:data-[state=checked]:translate-x-[22px]" />
       </Switch.Root>
-      <label className="" htmlFor="theme-switcher">
+      <label htmlFor="theme-switcher">
         <GoMoon />
       </label>
     </div>

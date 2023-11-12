@@ -41,6 +41,20 @@ const config: Config = {
           fontWeight: "300",
         },
       ],
+      headingLBoldMobile: [
+        "2.5rem",
+        {
+          lineHeight: "100%",
+          fontWeight: "500",
+        },
+      ],
+      headingLRegularMobile: [
+        "2.5rem",
+        {
+          lineHeight: "100%",
+          fontWeight: "300",
+        },
+      ],
       headingM: [
         "2.25rem",
         {
@@ -71,6 +85,13 @@ const config: Config = {
       ],
       bodyS: [
         "1.25rem",
+        {
+          lineHeight: "150%",
+          fontWeight: "400",
+        },
+      ],
+      bodySMobile: [
+        ".875rem",
         {
           lineHeight: "150%",
           fontWeight: "400",
