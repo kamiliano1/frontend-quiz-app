@@ -1,4 +1,3 @@
-// import React from "react";
 import { currentThemeState } from "@/atoms/themeSwitcherAtom";
 import * as Switch from "@radix-ui/react-switch";
 import { BiSun } from "react-icons/bi";
@@ -10,7 +9,7 @@ const ThemeSwitch: React.FC<ThemeSwitchProps> = () => {
   const [activeTheme, setActiveTheme] = useRecoilState(currentThemeState);
   return (
     <div
-      className={`flex items-center justify-end
+      className={`flex items-center justify-end lg:row-start-1 lg:col-start-2 
       ${activeTheme.isDarkMode ? "text-white" : "text-greyNavy"}`}
     >
       <label htmlFor="theme-switcher">

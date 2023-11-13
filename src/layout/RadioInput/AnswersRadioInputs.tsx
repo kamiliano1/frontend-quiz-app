@@ -10,18 +10,8 @@ import { RiJavascriptLine } from "react-icons/ri";
 
 import { HtmlIcon } from "../../../public/images/icon-html";
 import { AccessibilityIcon } from "../../../public/images/icon-accessibility";
-type AnswersRadioInputsProps = {};
-
-const questions = {
-  question: "What does HTML stand for?",
-  options: [
-    "Hyper Trainer Marking Language",
-    "Hyper Text Marketing Language",
-    "Hyper Text Markup Language",
-    "Hyper Text Markup Leveler",
-  ],
-  answer: "Hyper Text Markup Language",
-};
+import { QuestionType } from "../../../public/data/dataType";
+type AnswersRadioInputsProps = { question: QuestionType };
 
 const answerLetters = [
   "after:content-['A']",
@@ -30,7 +20,9 @@ const answerLetters = [
   "after:content-['D']",
 ];
 
-const AnswersRadioInputs: React.FC<AnswersRadioInputsProps> = () => {
+const AnswersRadioInputs: React.FC<AnswersRadioInputsProps> = ({
+  question,
+}) => {
   const activeTheme = useRecoilValue(currentThemeState);
   const [activeRadio, setActiveRadio] = useState("");
   const [checkAnswer, setCheckAnswer] = useState(false);
@@ -45,8 +37,8 @@ const AnswersRadioInputs: React.FC<AnswersRadioInputsProps> = () => {
   useEffect(() => {
     setIsError(false);
   }, [activeRadio]);
-  const printedQuestion = questions.options.map((item, id) => {
-    const isCorrect = questions.answer === item;
+  const printedQuestion = question.options.map((item, id) => {
+    const isCorrect = question.answer === item;
     return (
       <SingleRadio
         key={id}
@@ -61,9 +53,9 @@ const AnswersRadioInputs: React.FC<AnswersRadioInputsProps> = () => {
     );
   });
   return (
-    <form>
+    <form className="lg:row-start-2 lg:col-start-2">
       <RadioGroup.Root
-        className="flex flex-col gap-3 mb-3"
+        className="flex flex-col gap-3 sm:gap-6 mb-3 sm:mb-8"
         aria-label="View density"
         onValueChange={(state) => setActiveRadio(state)}
         defaultValue={activeRadio}
@@ -74,11 +66,6 @@ const AnswersRadioInputs: React.FC<AnswersRadioInputsProps> = () => {
       <Button type="button" onClick={submitAnswer}>
         Submit Answer
       </Button>
-      {/* <LuPaintbrush2 />
-      <RiJavascriptLine />
-      <HtmlIcon className="bg-red" />
-      <AccessibilityIcon /> */}
-      <p className="text-[rgba(255,_126,_53,_1)] text-[28px]">{`</>`}</p>
       {isError && (
         <div className="flex items-center justify-center mt-3">
           <VscError className="text-[2rem] text-red" />

@@ -15,7 +15,7 @@ export const PatternBackgroundMobileDark = (props: SVGProps<SVGSVGElement>) => {
         cy="323.5"
         r="416.5"
         stroke="#2D3949"
-        stroke-width="144"
+        strokeWidth="144"
       />
     </svg>
   );

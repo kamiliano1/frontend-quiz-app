@@ -19,14 +19,12 @@ const SubjectRadioInputs: React.FC<SubjectRadioInputsProps> = () => {
     );
   });
   return (
-    <div>
-      <RadioGroup.Root
-        className="flex flex-col gap-3 mb-3"
-        aria-label="View density"
-      >
-        {printedSubjects}
-      </RadioGroup.Root>
-    </div>
+    <RadioGroup.Root
+      className="flex flex-col gap-3 sm:gap-6 mb-3 lg:row-start-2 lg:col-start-2"
+      aria-label="View density"
+    >
+      {printedSubjects}
+    </RadioGroup.Root>
   );
 };
 export default SubjectRadioInputs;

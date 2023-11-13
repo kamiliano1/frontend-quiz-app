@@ -34,7 +34,7 @@ const SingleRadio: React.FC<SingleRadioProps> = ({
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
       onClick={activeAnswer}
-      className={`flex items-center cursor-pointer rounded-xl sm:rounded-[1.5rem] shadow-[0px_16px_40px_0px_rgba(143,_160,_193,_0.14)] text-darkNavy p-3 lg:py-[18px] lg:px-5 border-[3px] data-[state=checked]:bg-purple 
+      className={`flex items-center cursor-pointer rounded-xl sm:rounded-[1.5rem] text-darkNavy px-3 py-2.5 lg:py-[18px] lg:px-5 border-[3px] data-[state=checked]:bg-purple
         ${
           activeTheme.isDarkMode
             ? "bg-navy text-white border-navy"

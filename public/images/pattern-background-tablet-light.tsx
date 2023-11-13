@@ -1,20 +1,19 @@
 import { SVGProps } from "react";
-
-export const PatternBackgroundMobileLight = (
+export const PatternBackgroundTabletLight = (
   props: SVGProps<SVGSVGElement>
 ) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="375"
-      height="812"
+      width="438"
+      height="531"
       fill="none"
-      viewBox="0 0 375 812"
+      viewBox="0 0 438 531"
       {...props}
     >
       <circle
-        cx="-113.5"
-        cy="323.5"
+        cx="-50.5"
+        cy="42.5"
         r="416.5"
         stroke="#EDF1F9"
         strokeWidth="144"
