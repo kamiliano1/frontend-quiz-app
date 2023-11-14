@@ -1,4 +1,5 @@
 import React from "react";
+// import { quizData } from "@/app/quizData/quizData";
 import { quizData } from "../../../public/data/data";
 import * as RadioGroup from "@radix-ui/react-radio-group";
 import { currentThemeState } from "@/atoms/themeSwitcherAtom";
@@ -13,7 +14,7 @@ const SubjectRadioInputs: React.FC<SubjectRadioInputsProps> = () => {
       <SubjectRadio
         key={item.title}
         value={item.title}
-        answerLetter={item.icon}
+        icon={item.icon}
         activeTheme={activeTheme}
       />
     );

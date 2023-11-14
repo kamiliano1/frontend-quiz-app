@@ -9,7 +9,7 @@ const ThemeSwitch: React.FC<ThemeSwitchProps> = () => {
   const [activeTheme, setActiveTheme] = useRecoilState(currentThemeState);
   return (
     <div
-      className={`flex items-center justify-end lg:row-start-1 lg:col-start-2 
+      className={`flex items-center justify-end lg:row-start-1 lg:col-start-2 py-4
       ${activeTheme.isDarkMode ? "text-white" : "text-greyNavy"}`}
     >
       <label htmlFor="theme-switcher">

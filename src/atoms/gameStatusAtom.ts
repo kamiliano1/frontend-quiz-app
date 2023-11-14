@@ -3,6 +3,7 @@ import { SubjectsType } from "../../public/data/dataType";
 
 export type GameStatusState = {
   subject: SubjectsType;
+  questionNumber: number;
   isGameStarted: boolean;
   isGameFinished: boolean;
   userScore: number;
@@ -10,6 +11,7 @@ export type GameStatusState = {
 
 const defaultGameStatusState: GameStatusState = {
   subject: "Accessibility",
+  questionNumber: 0,
   isGameStarted: false,
   isGameFinished: false,
   userScore: 0,

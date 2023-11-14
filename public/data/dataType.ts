@@ -2,12 +2,20 @@ import React from "react";
 import { IconType } from "react-icons";
 export type SubjectsType = "HTML" | "CSS" | "JavaScript" | "Accessibility" | "";
 export type QuizzesType = {
-  quizzes: {
-    title: SubjectsType;
-    icon: IconType | React.JSX.Element;
-    questions: QuestionType[];
-  }[];
+  quizzes: SubjectType[];
 };
+
+export type SubjectType = {
+  title: SubjectsType;
+  icon: IconInterface;
+  questions: QuestionType[];
+};
+
+export interface IconInterface {
+  icon: IconType | React.JSX.ElementType;
+  color: string;
+  background: string;
+}
 
 export type QuestionType = {
   question: string;

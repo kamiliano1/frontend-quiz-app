@@ -7,7 +7,11 @@ export const quizData: QuizzesType = {
   quizzes: [
     {
       title: "HTML",
-      icon: HtmlIcon,
+      icon: {
+        icon: HtmlIcon,
+        color: "text-[rgba(255,_126,_53,_1)]",
+        background: "bg-[rgba(255,_241,_233,_1)]",
+      },
       questions: [
         {
           question: "What does HTML stand for?",
@@ -92,7 +96,11 @@ export const quizData: QuizzesType = {
     },
     {
       title: "CSS",
-      icon: LuPaintbrush2,
+      icon: {
+        icon: LuPaintbrush2,
+        color: "text-[rgba(47,_216,_135,_1)]",
+        background: "bg-[rgba(224,_253,_239,_1)]",
+      },
       questions: [
         {
           question: "What does CSS stand for?",
@@ -171,7 +179,12 @@ export const quizData: QuizzesType = {
     },
     {
       title: "JavaScript",
-      icon: RiJavascriptLine,
+      icon: {
+        icon: RiJavascriptLine,
+        color: "text-[rgba(48,_106,_255,_1)]",
+        background: "bg-[rgba(235,_240,_255,_1)]",
+      },
+
       questions: [
         {
           question:
@@ -270,7 +283,12 @@ export const quizData: QuizzesType = {
     },
     {
       title: "Accessibility",
-      icon: AccessibilityIcon,
+
+      icon: {
+        icon: AccessibilityIcon,
+        color: "text-purple",
+        background: "bg-[rgba(246,_231,_255,_1)]",
+      },
       questions: [
         {
           question: "What does 'WCAG' stand for?",

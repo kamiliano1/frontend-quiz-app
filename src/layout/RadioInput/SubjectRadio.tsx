@@ -1,20 +1,17 @@
 import React, { useState } from "react";
 import * as RadioGroup from "@radix-ui/react-radio-group";
 import { CurrentThemeState } from "@/atoms/themeSwitcherAtom";
-import { IconType } from "react-icons";
-import { LuPaintbrush2 } from "react-icons/lu";
 import { gameStatusState } from "@/atoms/gameStatusAtom";
 import { useRecoilState } from "recoil";
-import { SubjectsType } from "../../../public/data/dataType";
+import { IconInterface, SubjectsType } from "../../../public/data/dataType";
 type SubjectRadioProps = {
   value: SubjectsType;
-  answerLetter: IconType | React.JSX.Element;
+  icon: IconInterface;
   activeTheme: CurrentThemeState;
 };
-
 const SubjectRadio: React.FC<SubjectRadioProps> = ({
   value,
-  answerLetter,
+  icon,
   activeTheme,
 }) => {
   const [isHover, setIsHover] = useState(false);
@@ -22,7 +19,13 @@ const SubjectRadio: React.FC<SubjectRadioProps> = ({
   const startQuiz = () => {
     setGameStatus((prev) => ({ ...prev, subject: value }));
   };
-
+  const SubjectIcon = () => {
+    return (
+      <icon.icon
+        className={`text-headingS sm:text-headingLRegularMobile ${icon.color} `}
+      />
+    );
+  };
   return (
     <div
       onMouseEnter={() => setIsHover(true)}
@@ -37,14 +40,15 @@ const SubjectRadio: React.FC<SubjectRadioProps> = ({
           `}
     >
       <RadioGroup.Item
-        className={`bg-lightGrey w-[40px] h-[40px] sm:w-[56px] sm:h-[56px] after:text-headingXS sm:after:text-headingM 
+        className={`w-[40px] h-[40px] sm:w-[56px] sm:h-[56px] after:text-headingXS sm:after:text-headingM flex items-center justify-center 
+         ${icon.background} 
            after:text-greyNavy outline-none cursor-default rounded-lg 
           ${isHover && "bg-purple bg-opacity-40 after:text-purple"}
           `}
         value={value}
         id={value}
       >
-        <LuPaintbrush2 />
+        <SubjectIcon />
       </RadioGroup.Item>
       <label
         className="text-headingXS sm:text-headingS leading-none pl-4 sm:pl-8"
