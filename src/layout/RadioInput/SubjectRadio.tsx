@@ -17,7 +17,7 @@ const SubjectRadio: React.FC<SubjectRadioProps> = ({
   const [isHover, setIsHover] = useState(false);
   const [gameStatus, setGameStatus] = useRecoilState(gameStatusState);
   const startQuiz = () => {
-    setGameStatus((prev) => ({ ...prev, subject: value }));
+    setGameStatus((prev) => ({ ...prev, subject: value, isGameStarted: true }));
   };
   const SubjectIcon = () => {
     return (

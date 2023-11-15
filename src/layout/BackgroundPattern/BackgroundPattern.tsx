@@ -13,19 +13,19 @@ type BackgroundPatternProps = {};
 const BackgroundPattern: React.FC<BackgroundPatternProps> = () => {
   const windowWidth = useWindowWith();
   const activeTheme = useRecoilValue(currentThemeState);
-
+  const cssClass = "absolute top-0 z-[-1] left-0";
   if (windowWidth < 400) {
     if (activeTheme.isDarkMode) {
-      return <PatternBackgroundMobileDark className="absolute top-0  z-[-1]" />;
+      return <PatternBackgroundMobileDark className={cssClass} />;
     }
-    return <PatternBackgroundMobileLight className="absolute top-0  z-[-1]" />;
+    return <PatternBackgroundMobileLight className={cssClass} />;
   } else if (windowWidth < 900) {
     if (activeTheme.isDarkMode) {
-      return <PatternBackgroundTabletDark className="absolute top-0  z-[-1]" />;
+      return <PatternBackgroundTabletDark className={cssClass} />;
     }
-    return <PatternBackgroundTabletLight className="absolute top-0  z-[-1]" />;
+    return <PatternBackgroundTabletLight className={cssClass} />;
   } else if (activeTheme.isDarkMode)
-    return <PatternBackgroundDesktopDark className="absolute top-0 z-[-1]" />;
-  return <PatternBackgroundDesktopLight className="absolute top-0 z-[-1]" />;
+    return <PatternBackgroundDesktopDark className={cssClass} />;
+  return <PatternBackgroundDesktopLight className={cssClass} />;
 };
 export default BackgroundPattern;

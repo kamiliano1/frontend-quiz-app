@@ -11,7 +11,6 @@ const WelcomePage: React.FC<WelcomePageProps> = () => {
   return (
     <>
       <ThemeSwitch />
-
       <div className="col-start-1 row-start-2">
         <h1 className="mt-12 lg:mt-0 text-headingLRegularMobile sm:text-headingLRegular block">
           Welcome to the{" "}

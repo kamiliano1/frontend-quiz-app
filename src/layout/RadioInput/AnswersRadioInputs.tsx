@@ -2,15 +2,11 @@ import React, { SVGProps, useEffect, useState } from "react";
 import * as RadioGroup from "@radix-ui/react-radio-group";
 import { VscError } from "react-icons/vsc";
 import Button from "../Button/Button";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { currentThemeState } from "@/atoms/themeSwitcherAtom";
 import SingleRadio from "./SingleRadio";
-import { LuPaintbrush2 } from "react-icons/lu";
-import { RiJavascriptLine } from "react-icons/ri";
-
-import { HtmlIcon } from "../../../public/images/icon-html";
-import { AccessibilityIcon } from "../../../public/images/icon-accessibility";
 import { QuestionType } from "../../../public/data/dataType";
+import { gameStatusState } from "@/atoms/gameStatusAtom";
 type AnswersRadioInputsProps = { question: QuestionType };
 
 const answerLetters = [
@@ -24,6 +20,7 @@ const AnswersRadioInputs: React.FC<AnswersRadioInputsProps> = ({
   question,
 }) => {
   const activeTheme = useRecoilValue(currentThemeState);
+  const [gameStatus, setGameStatus] = useRecoilState(gameStatusState);
   const [activeRadio, setActiveRadio] = useState("");
   const [checkAnswer, setCheckAnswer] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -32,8 +29,29 @@ const AnswersRadioInputs: React.FC<AnswersRadioInputsProps> = ({
       setIsError(true);
       return;
     }
+    if (checkAnswer) {
+      if (activeRadio === question.answer)
+        setGameStatus((prev) => ({
+          ...prev,
+          userScore: gameStatus.userScore + 1,
+        }));
+      gameStatus.questionNumber === 9
+        ? setGameStatus((prev) => ({ ...prev, isGameFinished: true }))
+        : setGameStatus((prev) => ({
+            ...prev,
+            questionNumber: gameStatus.questionNumber + 1,
+          }));
+      return;
+    }
     setCheckAnswer(true);
   };
+
+  useEffect(() => {
+    setActiveRadio("");
+    setIsError(false);
+    setCheckAnswer(false);
+  }, [gameStatus.questionNumber]);
+
   useEffect(() => {
     setIsError(false);
   }, [activeRadio]);
@@ -46,7 +64,8 @@ const AnswersRadioInputs: React.FC<AnswersRadioInputsProps> = ({
         activeRadio={activeRadio}
         value={item}
         isCorrectAnswer={isCorrect}
-        isAnswerSubmitted={checkAnswer}
+        // isAnswerSubmitted={checkAnswer}
+        isAnswerSubmitted={true}
         answerLetter={answerLetters[id]}
         activeTheme={activeTheme}
       />
@@ -54,17 +73,17 @@ const AnswersRadioInputs: React.FC<AnswersRadioInputsProps> = ({
   });
   return (
     <form className="lg:row-start-2 lg:col-start-2">
+      <h2>wynik {gameStatus.userScore}</h2>
       <RadioGroup.Root
         className="flex flex-col gap-3 sm:gap-6 mb-3 sm:mb-8"
         aria-label="View density"
         onValueChange={(state) => setActiveRadio(state)}
-        defaultValue={activeRadio}
         disabled={checkAnswer}
       >
         {printedQuestion}
       </RadioGroup.Root>
       <Button type="button" onClick={submitAnswer}>
-        Submit Answer
+        {checkAnswer ? "Next question" : "Submit Answer"}
       </Button>
       {isError && (
         <div className="flex items-center justify-center mt-3">

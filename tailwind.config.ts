@@ -27,6 +27,13 @@ const config: Config = {
           fontWeight: "500",
         },
       ],
+      displayMobile: [
+        "5.5rem",
+        {
+          lineHeight: "100%",
+          fontWeight: "500",
+        },
+      ],
       headingLBold: [
         "4rem",
         {

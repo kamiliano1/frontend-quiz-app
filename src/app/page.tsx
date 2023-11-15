@@ -28,10 +28,9 @@ export default function Home() {
       >
         <div className="lg:h-[960px] lg:w-[1440px]">
           <div className="z-[1] relative px-6 py-4 sm:px-16 sm:py-14 lg:py-24 lg:px-32 lg:grid lg:grid-rows-[141px,_auto] lg:gap-x-10 lg:grid-cols-2 max-w-[1440px]">
-            {/* {gameStatus.subject ? <QuestionPage /> : <WelcomePage />}
-          <BackgroundPattern /> */}
-            {zmianaStrony ? <QuestionPage /> : <WelcomePage />}
+            {gameStatus.isGameStarted ? <QuestionPage /> : <WelcomePage />}
             <BackgroundPattern />
+            {/* {zmianaStrony ? <QuestionPage /> : <WelcomePage />} */}
             {/* <QuestionPage /> */}
           </div>
         </div>

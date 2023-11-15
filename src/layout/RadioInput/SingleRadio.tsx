@@ -66,7 +66,7 @@ const SingleRadio: React.FC<SingleRadioProps> = ({
         id={value}
       ></RadioGroup.Item>
       <label
-        className="text-headingXS sm:text-headingS leading-none pl-4 sm:pl-8"
+        className="text-headingXS sm:text-headingS leading-none pl-4 sm:pl-8 max-w-[450px]"
         htmlFor={value}
       >
         {value}

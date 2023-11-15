@@ -10,7 +10,7 @@ export type GameStatusState = {
 };
 
 const defaultGameStatusState: GameStatusState = {
-  subject: "Accessibility",
+  subject: "",
   questionNumber: 0,
   isGameStarted: false,
   isGameFinished: false,
