@@ -24,6 +24,7 @@ const SingleRadio: React.FC<SingleRadioProps> = ({
 }) => {
   const [isHover, setIsHover] = useState(false);
   const isActive = activeRadio === value;
+
   const activeAnswer = () => {
     if (!isAnswerSubmitted) {
       setActiveRadio(value);
@@ -34,19 +35,28 @@ const SingleRadio: React.FC<SingleRadioProps> = ({
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
       onClick={activeAnswer}
-      className={`flex items-center cursor-pointer rounded-xl sm:rounded-[1.5rem] text-darkNavy px-3 py-2.5 lg:py-[18px] lg:px-5 border-[3px] data-[state=checked]:bg-purple
+      className={`flex items-center 
+      ${!isAnswerSubmitted && "cursor-pointer"} 
+      rounded-xl sm:rounded-[1.5rem] text-darkNavy px-3 py-2.5 lg:py-[18px] lg:px-5 border-[3px] data-[state=checked]:bg-purple 
         ${
           activeTheme.isDarkMode
             ? "bg-navy text-white border-navy"
             : "bg-white text-darkNavy border-white"
         }
-        ${isAnswerSubmitted && isCorrectAnswer && isActive && "border-green"}
+        ${!isAnswerSubmitted && isActive && "border-purple"}
+        ${
+          isAnswerSubmitted &&
+          isCorrectAnswer &&
+          isActive &&
+          "border-[rgba(38,_215,_130,_1)]"
+        }
         ${isAnswerSubmitted && !isCorrectAnswer && isActive && "border-red"}
-          `}
-    >
+          `}>
       <RadioGroup.Item
         className={`bg-lightGrey w-[40px] h-[40px] sm:w-[56px] sm:h-[56px] after:text-headingXS sm:after:text-headingM 
-          ${answerLetter} after:text-greyNavy outline-none cursor-default rounded-lg 
+          ${answerLetter} after:text-greyNavy outline-none 
+          ${!isAnswerSubmitted && "cursor-pointer"} 
+          rounded-lg 
           ${
             isAnswerSubmitted &&
             isCorrectAnswer &&
@@ -58,17 +68,17 @@ const SingleRadio: React.FC<SingleRadioProps> = ({
             isHover &&
             !isActive &&
             !isAnswerSubmitted &&
-            "bg-purple bg-opacity-40 after:text-purple"
+            "bg-[#F6E7FF] after:text-purple"
           }
           ${isActive && "bg-purple after:text-white"}
           `}
         value={value}
-        id={value}
-      ></RadioGroup.Item>
+        id={value}></RadioGroup.Item>
       <label
-        className="text-headingXS sm:text-headingS leading-none pl-4 sm:pl-8 max-w-[450px]"
-        htmlFor={value}
-      >
+        className={`text-headingXS sm:text-headingS leading-none pl-4 sm:pl-8 max-w-[450px] cursor-pointer
+        ${!isAnswerSubmitted && "cursor-pointer"} 
+        `}
+        htmlFor={value}>
         {value}
       </label>
       {isAnswerSubmitted && isCorrectAnswer && isActive && (

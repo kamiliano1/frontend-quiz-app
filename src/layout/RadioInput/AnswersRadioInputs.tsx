@@ -5,8 +5,8 @@ import Button from "../Button/Button";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { currentThemeState } from "@/atoms/themeSwitcherAtom";
 import SingleRadio from "./SingleRadio";
-import { QuestionType } from "../../../public/data/dataType";
 import { gameStatusState } from "@/atoms/gameStatusAtom";
+import { QuestionType } from "@/data/dataType";
 type AnswersRadioInputsProps = { question: QuestionType };
 
 const answerLetters = [
@@ -64,8 +64,8 @@ const AnswersRadioInputs: React.FC<AnswersRadioInputsProps> = ({
         activeRadio={activeRadio}
         value={item}
         isCorrectAnswer={isCorrect}
-        // isAnswerSubmitted={checkAnswer}
-        isAnswerSubmitted={true}
+        isAnswerSubmitted={checkAnswer}
+        // isAnswerSubmitted={true}
         answerLetter={answerLetters[id]}
         activeTheme={activeTheme}
       />
@@ -78,8 +78,7 @@ const AnswersRadioInputs: React.FC<AnswersRadioInputsProps> = ({
         className="flex flex-col gap-3 sm:gap-6 mb-3 sm:mb-8"
         aria-label="View density"
         onValueChange={(state) => setActiveRadio(state)}
-        disabled={checkAnswer}
-      >
+        disabled={checkAnswer}>
         {printedQuestion}
       </RadioGroup.Root>
       <Button type="button" onClick={submitAnswer}>
@@ -91,8 +90,7 @@ const AnswersRadioInputs: React.FC<AnswersRadioInputsProps> = ({
           <p
             className={`text-headingXS font-normal ${
               activeTheme.isDarkMode ? "text-white" : "text-red"
-            }  ml-2`}
-          >
+            }  ml-2`}>
             Please select an answer
           </p>
         </div>

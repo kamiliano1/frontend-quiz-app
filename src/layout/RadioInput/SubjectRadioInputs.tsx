@@ -1,6 +1,6 @@
 import React from "react";
 // import { quizData } from "@/app/quizData/quizData";
-import { quizData } from "../../../public/data/data";
+import { quizData } from "@/data/data";
 import * as RadioGroup from "@radix-ui/react-radio-group";
 import { currentThemeState } from "@/atoms/themeSwitcherAtom";
 import { useRecoilValue } from "recoil";
@@ -22,8 +22,7 @@ const SubjectRadioInputs: React.FC<SubjectRadioInputsProps> = () => {
   return (
     <RadioGroup.Root
       className="flex flex-col gap-3 sm:gap-6 mb-3 lg:row-start-2 lg:col-start-2"
-      aria-label="View density"
-    >
+      aria-label="View density">
       {printedSubjects}
     </RadioGroup.Root>
   );

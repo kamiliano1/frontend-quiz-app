@@ -1,5 +1,5 @@
-import { HtmlIcon } from "../images/icon-html";
-import { AccessibilityIcon } from "../images/icon-accessibility";
+import { HtmlIcon } from "../../public//images/icon-html";
+import { AccessibilityIcon } from "../../public/images/icon-accessibility";
 import { QuizzesType } from "./dataType";
 import { LuPaintbrush2 } from "react-icons/lu";
 import { RiJavascriptLine } from "react-icons/ri";
