@@ -46,7 +46,8 @@ const QuizPage: React.FC<QuizPageProps> = () => {
       <div className="flex justify-between pb-4 lg:pb-0 col-span-2">
         <div className="flex gap-x-4 sm:gap-x-6 items-center">
           <div
-            className={` ${color} ${background} w-[40px] h-[40px] sm:w-[56px] sm:h-[56px] rounded-lg flex items-center justify-center`}>
+            className={` ${color} ${background} w-[40px] h-[40px] sm:w-[56px] sm:h-[56px] rounded-lg flex items-center justify-center`}
+          >
             {" "}
             <activeSubjectQuestions.icon.icon className="text-headingS sm:text-headingLRegularMobile" />
           </div>
@@ -54,7 +55,8 @@ const QuizPage: React.FC<QuizPageProps> = () => {
             className={`text-headingXS sm:text-headingS
 
             ${activeTheme.isDarkMode ? "text-white" : "text-darkNavy"}
-`}>
+`}
+          >
             {gameStatus.subject}
           </p>
         </div>

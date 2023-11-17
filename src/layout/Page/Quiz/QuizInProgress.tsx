@@ -8,26 +8,30 @@ const QuizInProgress: React.FC<QuizType> = ({
   activeSubjectQuestions,
   activeTheme,
 }) => {
+  const { questionNumber } = gameStatus;
+  const subjectQuestionQuantity = activeSubjectQuestions.questions.length;
+  const activatedQuestion =
+    activeSubjectQuestions.questions[questionNumber].question;
+  const activatedAnswers = activeSubjectQuestions.questions[questionNumber];
   return (
     <>
-      <div className="col-start-1 row-start-2 pt-8">
+      <div className="col-start-1 row-start-2 pt-8 lg:pt-0 bg-red flex flex-col">
         <p
           className={`text-bodySMobile sm:text-bodyS mb-3
   ${activeTheme.isDarkMode ? "text-lightBluish" : "text-greyNavy"}
-  `}>
-          Question {gameStatus.questionNumber + 1} of{" "}
-          {activeSubjectQuestions.questions.length}
+  `}
+        >
+          Question {questionNumber + 1} of {subjectQuestionQuantity}
         </p>
         <h3
-          className={` text-bodyS sm:text-headingM mb-6
-    ${activeTheme.isDarkMode ? "text-white" : "text-darkNavy"}`}>
-          {activeSubjectQuestions.questions[gameStatus.questionNumber].question}
+          className={` text-headingMMobile sm:text-headingM mb-6 lg:mb-40
+    ${activeTheme.isDarkMode ? "text-white" : "text-darkNavy"}`}
+        >
+          {activatedQuestion}
         </h3>
-        <ProgressBar progress={gameStatus.questionNumber + 1} />
+        <ProgressBar progress={questionNumber + 1} />
       </div>
-      <AnswersRadioInputs
-        question={activeSubjectQuestions.questions[gameStatus.questionNumber]}
-      />
+      <AnswersRadioInputs question={activatedAnswers} />
     </>
   );
 };

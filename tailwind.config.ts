@@ -69,6 +69,13 @@ const config: Config = {
           fontWeight: "500",
         },
       ],
+      headingMMobile: [
+        "1.25rem",
+        {
+          lineHeight: "100%",
+          fontWeight: "500",
+        },
+      ],
       headingS: [
         "1.75rem",
         {

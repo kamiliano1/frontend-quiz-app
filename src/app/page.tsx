@@ -19,14 +19,17 @@ export default function Home() {
           activeTheme.isDarkMode
             ? "bg-darkNavy text-white"
             : "bg-lightGrey text-darkNavy"
-        }`}>
-        <div className="lg:h-[960px] lg:w-[1440px]">
+        }`}
+      >
+        <div className="lg:max-h-[960px] lg:w-[1440px]">
           <div
-            className="z-[1] relative px-6 py-4 ssm:px-16 sm:py-14 lg:py-24 
+            className="z-[1] relative px-6 py-4 sm:py-14
+            lg:py-[clamp(3.5rem,_15vh,_6rem)]
           lg:px-[clamp(4rem,_8.1vw,_8rem)] sm:px-[clamp(1.5rem,_8.4vw,_4rem)]
-          lg:grid lg:grid-rows-[141px,_auto] lg:gap-x-10 lg:grid-cols-2 max-w-[1440px]">
+          lg:grid lg:grid-rows-[clamp(2rem,18vh,171px),_auto] lg:gap-x-10 lg:grid-cols-2 max-w-[1440px]"
+          >
             {gameStatus.isGameStarted ? <QuizPage /> : <WelcomePage />}
-            <BackgroundPattern />
+            {/* <BackgroundPattern /> */}
             {/* {zmianaStrony ? <QuestionPage /> : <WelcomePage />} */}
             {/* <QuestionPage /> */}
           </div>

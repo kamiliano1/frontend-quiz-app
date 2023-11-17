@@ -65,7 +65,6 @@ const AnswersRadioInputs: React.FC<AnswersRadioInputsProps> = ({
         value={item}
         isCorrectAnswer={isCorrect}
         isAnswerSubmitted={checkAnswer}
-        // isAnswerSubmitted={true}
         answerLetter={answerLetters[id]}
         activeTheme={activeTheme}
       />
@@ -73,12 +72,12 @@ const AnswersRadioInputs: React.FC<AnswersRadioInputsProps> = ({
   });
   return (
     <form className="lg:row-start-2 lg:col-start-2">
-      <h2>wynik {gameStatus.userScore}</h2>
       <RadioGroup.Root
         className="flex flex-col gap-3 sm:gap-6 mb-3 sm:mb-8"
         aria-label="View density"
         onValueChange={(state) => setActiveRadio(state)}
-        disabled={checkAnswer}>
+        disabled={checkAnswer}
+      >
         {printedQuestion}
       </RadioGroup.Root>
       <Button type="button" onClick={submitAnswer}>
@@ -90,7 +89,8 @@ const AnswersRadioInputs: React.FC<AnswersRadioInputsProps> = ({
           <p
             className={`text-headingXS font-normal ${
               activeTheme.isDarkMode ? "text-white" : "text-red"
-            }  ml-2`}>
+            }  ml-2`}
+          >
             Please select an answer
           </p>
         </div>
