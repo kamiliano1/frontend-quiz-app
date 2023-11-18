@@ -10,11 +10,13 @@ const WelcomePage: React.FC<WelcomePageProps> = () => {
   const activeTheme = useRecoilValue(currentThemeState);
   return (
     <>
-      <ThemeSwitch />
-      <div className="col-start-1 row-start-2">
+      <div className="col-span-2 my-auto">
+        <ThemeSwitch />
+      </div>
+      <div className="col-start-1 row-start-2 lg:min-h-[585.33px]">
         <h1 className="mt-12 lg:mt-0 text-headingLRegularMobile sm:text-headingLRegular block">
           Welcome to the{" "}
-          <span className="text-headingLBoldMobile sm:text-headingLBold block">
+          <span className="text-headingLBoldMobile sm:text-headingLBold block mt-2">
             Frontend Quiz!
           </span>
         </h1>

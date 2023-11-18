@@ -40,13 +40,13 @@ const QuizPage: React.FC<QuizPageProps> = () => {
 
   return (
     <>
-      <button className="absolute" onClick={() => setZmiana((prev) => !prev)}>
+      {/* <button className="absolute" onClick={() => setZmiana((prev) => !prev)}>
         Zmiana
-      </button>
-      <div className="flex justify-between pb-4 lg:pb-0 col-span-2">
+      </button> */}
+      <div className="flex justify-between items-center pb-4 lg:pb-0 col-span-2">
         <div className="flex gap-x-4 sm:gap-x-6 items-center">
           <div
-            className={` ${color} ${background} w-[40px] h-[40px] sm:w-[56px] sm:h-[56px] rounded-lg flex items-center justify-center`}
+            className={`${color} ${background} w-[40px] h-[40px] sm:w-[56px] sm:h-[56px] rounded-lg flex items-center justify-center`}
           >
             {" "}
             <activeSubjectQuestions.icon.icon className="text-headingS sm:text-headingLRegularMobile" />

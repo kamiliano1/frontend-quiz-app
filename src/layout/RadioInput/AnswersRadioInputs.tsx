@@ -74,7 +74,7 @@ const AnswersRadioInputs: React.FC<AnswersRadioInputsProps> = ({
     <form className="lg:row-start-2 lg:col-start-2">
       <RadioGroup.Root
         className="flex flex-col gap-3 sm:gap-6 mb-3 sm:mb-8"
-        aria-label="View density"
+        aria-label="Answers"
         onValueChange={(state) => setActiveRadio(state)}
         disabled={checkAnswer}
       >

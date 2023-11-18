@@ -20,7 +20,7 @@ const QuizCompleted: React.FC<QuizType> = ({
   };
   return (
     <>
-      <div className="mx-auto lg:mx-0 max-w-[450px] lg:min-h-[585.33px]">
+      <div className="lg:mx-0 lg:min-h-[585.33px]">
         <h2
           className={`text-headingLRegularMobile sm:text-headingLRegular mt-8 lg:mt-0 mb-2 ${
             activeTheme.isDarkMode ? "text-white" : "text-darkNavy"
@@ -36,13 +36,13 @@ const QuizCompleted: React.FC<QuizType> = ({
           You scored...
         </h3>
       </div>
-      <div className="mx-auto lg:mx-0 max-w-[564px]">
+      <div className="lg:mx-0">
         <div
-          className={`p-8 w-full flex flex-col items-center  ${
+          className={`p-8 sm:p-12 w-full flex flex-col items-center  ${
             activeTheme.isDarkMode ? "bg-navy" : "bg-white"
           } rounded-xl`}
         >
-          <div className="flex items-center mb-4">
+          <div className="flex items-center mb-4 sm:mb-10">
             <div
               className={` ${color} ${background} w-[40px] h-[40px] sm:w-[56px] sm:h-[56px] rounded-lg flex items-center justify-center`}
             >
@@ -67,7 +67,7 @@ ${activeTheme.isDarkMode ? "text-white" : "text-darkNavy"}
           <p
             className={`
           ${activeTheme.isDarkMode ? "text-lightBluish" : "text-greyNavy"}
-      text-headingXS sm:text-headingS`}
+      text-headingXS sm:text-bodyM`}
           >
             out of {activeSubjectQuestions.questions.length}
           </p>

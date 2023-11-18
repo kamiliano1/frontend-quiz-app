@@ -13,7 +13,12 @@ export default function Home() {
   const [zmianaStrony, setZmianaStrony] = useState(false);
   return (
     <>
-      {/* <button onClick={() => setZmianaStrony((prev) => !prev)}>Zmiana</button> */}
+      {/* <button
+        className="absolute z-[9999]"
+        onClick={() => setZmianaStrony((prev) => !prev)}
+      >
+        Zmiana MAIN
+      </button> */}
       <main
         className={`relative overflow-x-hidden sm:pb-52 lg:pb-0 h-[100vh] lg:flex lg:items-center justify-center ${
           activeTheme.isDarkMode
@@ -24,13 +29,13 @@ export default function Home() {
         <div className="lg:max-h-[960px] lg:w-[1440px]">
           <div
             className="z-[1] relative px-6 py-4 sm:py-14
-            lg:py-[clamp(3.5rem,_15vh,_6rem)]
+            lg:py-[clamp(3.5rem,_15vh,_6rem)]a lg:py-0
           lg:px-[clamp(4rem,_8.1vw,_8rem)] sm:px-[clamp(1.5rem,_8.4vw,_4rem)]
-          lg:grid lg:grid-rows-[clamp(2rem,18vh,171px),_auto] lg:gap-x-10 lg:grid-cols-2 max-w-[1440px]"
+          lg:grid lg:grid-rows-[clamp(2rem,18vh,171px),_auto] lg:gap-x-10 lg:grid-cols-[minmax(400px,_453px),_minmax(400px,_564px)] lg:justify-between max-w-[1440px]"
           >
             {gameStatus.isGameStarted ? <QuizPage /> : <WelcomePage />}
-            {/* <BackgroundPattern /> */}
-            {/* {zmianaStrony ? <QuestionPage /> : <WelcomePage />} */}
+            <BackgroundPattern />
+            {/* {zmianaStrony ? <QuizPage /> : <WelcomePage />} */}
             {/* <QuestionPage /> */}
           </div>
         </div>

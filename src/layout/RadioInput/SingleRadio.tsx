@@ -35,9 +35,9 @@ const SingleRadio: React.FC<SingleRadioProps> = ({
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
       onClick={activeAnswer}
-      className={`flex items-center 
+      className={`grid grid-cols-[40px,_auto,_32px] sm:grid-cols-[56px,_auto] items-center 
       ${!isAnswerSubmitted && "cursor-pointer"} 
-      rounded-xl sm:rounded-[1.5rem] text-darkNavy px-3 py-2.5 lg:py-[18px] lg:px-5 border-[3px] data-[state=checked]:bg-purple 
+      rounded-xl sm:rounded-[1.5rem] text-darkNavy px-3 py-[9.34px] lg:py-[18px] lg:px-5 border-[3px] data-[state=checked]:bg-purple 
         ${
           activeTheme.isDarkMode
             ? "bg-navy text-white border-navy"
@@ -51,7 +51,8 @@ const SingleRadio: React.FC<SingleRadioProps> = ({
           "border-[rgba(38,_215,_130,_1)]"
         }
         ${isAnswerSubmitted && !isCorrectAnswer && isActive && "border-red"}
-          `}>
+          `}
+    >
       <RadioGroup.Item
         className={`bg-lightGrey w-[40px] h-[40px] sm:w-[56px] sm:h-[56px] after:text-headingXS sm:after:text-headingM 
           ${answerLetter} after:text-greyNavy outline-none 
@@ -73,22 +74,24 @@ const SingleRadio: React.FC<SingleRadioProps> = ({
           ${isActive && "bg-purple after:text-white"}
           `}
         value={value}
-        id={value}></RadioGroup.Item>
+        id={value}
+      ></RadioGroup.Item>
       <label
-        className={`text-headingXS sm:text-headingS leading-none pl-4 sm:pl-8 max-w-[450px] cursor-pointer
+        className={`text-headingXS sm:text-headingS leading-none pl-4 sm:pl-8 cursor-pointer
         ${!isAnswerSubmitted && "cursor-pointer"} 
         `}
-        htmlFor={value}>
+        htmlFor={value}
+      >
         {value}
       </label>
       {isAnswerSubmitted && isCorrectAnswer && isActive && (
-        <AiOutlineCheckCircle className="text-[2rem] text-green ml-auto" />
+        <AiOutlineCheckCircle className="text-[2rem] text-green ml-auto col-start-3" />
       )}
       {isAnswerSubmitted && isActive && !isCorrectAnswer && (
-        <VscError className="text-[2rem] text-red ml-auto" />
+        <VscError className="text-[2rem] text-red ml-auto col-start-3" />
       )}
       {isAnswerSubmitted && isCorrectAnswer && !isActive && (
-        <AiOutlineCheckCircle className="text-[2rem] text-green ml-auto" />
+        <AiOutlineCheckCircle className="text-[2rem] text-green ml-auto col-start-3" />
       )}
     </div>
   );

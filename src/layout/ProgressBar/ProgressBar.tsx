@@ -8,7 +8,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ progress }) => {
   const activeTheme = useRecoilValue(currentThemeState);
   return (
     <div
-      className={`rounded-full p-1 mb-6 ${
+      className={`rounded-full p-1 mb-10 sm:mb-16 ${
         activeTheme.isDarkMode ? "bg-navy" : "bg-white"
       }`}
     >

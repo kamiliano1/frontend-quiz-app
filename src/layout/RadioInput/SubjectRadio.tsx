@@ -32,13 +32,14 @@ const SubjectRadio: React.FC<SubjectRadioProps> = ({
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
       onClick={startQuiz}
-      className={`flex items-center cursor-pointer rounded-xl sm:rounded-[1.5rem] text-darkNavy px-3 py-2.5 lg:py-[18px] lg:px-5 border-[3px] data-[state=checked]:bg-purple 
+      className={`flex items-center cursor-pointer rounded-xl sm:rounded-[1.5rem] text-darkNavy px-3 py-[9.34px] lg:py-[1.08375rem] lg:px-5 border-[3px] data-[state=checked]:bg-purple 
         ${
           activeTheme.isDarkMode
             ? "bg-navy text-white border-navy"
             : "bg-white text-darkNavy border-white"
         }
-          `}>
+          `}
+    >
       <RadioGroup.Item
         className={`w-[40px] h-[40px] sm:w-[56px] sm:h-[56px] cursor-pointer after:text-headingXS sm:after:text-headingM flex items-center justify-center 
         //  ${icon.background} 
@@ -47,12 +48,14 @@ const SubjectRadio: React.FC<SubjectRadioProps> = ({
            after:text-greyNavy outline-none rounded-lg 
           `}
         value={value}
-        id={value}>
+        id={value}
+      >
         <SubjectIcon />
       </RadioGroup.Item>
       <label
         className="text-headingXS cursor-pointer sm:text-headingS leading-none pl-4 sm:pl-8"
-        htmlFor={value}>
+        htmlFor={value}
+      >
         {value}
       </label>
     </div>
