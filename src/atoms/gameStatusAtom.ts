@@ -1,5 +1,5 @@
+import { SubjectsType } from "@/data/dataType";
 import { atom } from "recoil";
-import { SubjectsType } from "../../public/data/dataType";
 
 export type GameStatusState = {
   subject: SubjectsType;
