@@ -2,9 +2,11 @@
 import { gameStatusState } from "@/atoms/gameStatusAtom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { currentThemeState } from "@/atoms/themeSwitcherAtom";
+
 import BackgroundPattern from "@/layout/BackgroundPattern/BackgroundPattern";
 import WelcomePage from "@/layout/Page/WelcomePage";
 import QuizPage from "@/layout/Page/Quiz/QuizPage";
+import { useState } from "react";
 export default function Home() {
   const [gameStatus, setGameStatus] = useRecoilState(gameStatusState);
   const activeTheme = useRecoilValue(currentThemeState);
@@ -21,7 +23,7 @@ export default function Home() {
           className="z-[1] relative px-6 py-4 sm:py-14
             lg:py-[clamp(3.5rem,_15vh,_6rem)]a lg:py-0
           lg:px-[clamp(4rem,_8.1vw,_8rem)] sm:px-[clamp(1.5rem,_8.4vw,_4rem)]
-          lg:grid lg:grid-rows-[clamp(2rem,24vh,224px),_auto] lg:gap-x-10 lg:grid-cols-[minmax(400px,_453px),_minmax(400px,_564px)] lg:justify-between max-w-[1440px]"
+          lg:grid lg:grid-rows-[clamp(2rem,18vh,171px),_auto] lg:gap-x-10 lg:grid-cols-[minmax(400px,_453px),_minmax(400px,_564px)] lg:justify-between max-w-[1440px] lg:grid-rows-[clamp(2rem,24vh,224px),_auto]s"
         >
           {gameStatus.isGameStarted ? <QuizPage /> : <WelcomePage />}
           <BackgroundPattern />
