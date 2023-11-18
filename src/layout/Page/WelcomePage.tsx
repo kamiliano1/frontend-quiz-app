@@ -10,7 +10,7 @@ const WelcomePage: React.FC<WelcomePageProps> = () => {
   const activeTheme = useRecoilValue(currentThemeState);
   return (
     <>
-      <div className="col-span-2 my-auto">
+      <div className="col-span-2 my-auto bg-darkNavy">
         <ThemeSwitch />
       </div>
       <div className="col-start-1 row-start-2 lg:min-h-[585.33px]">
