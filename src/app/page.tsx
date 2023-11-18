@@ -12,13 +12,22 @@ export default function Home() {
   const activeTheme = useRecoilValue(currentThemeState);
   return (
     <main
-      className={`relative overflow-x-hidden sm:pb-52 lg:pb-0 h-[100vh] lg:flex lg:items-center justify-center ${
-        activeTheme.isDarkMode
-          ? "bg-darkNavy text-white"
-          : "bg-lightGrey text-darkNavy"
-      }`}
+      className={`relative overflow-x-hidden sm:pb-52 lg:pb-0 h-[100vh] 
+       ${
+         activeTheme.isDarkMode
+           ? "bg-darkNavy text-white"
+           : "bg-lightGrey text-darkNavy"
+       }`}
+      // className={`relative overflow-x-hidden sm:pb-52 lg:pb-0 h-[100vh]
+      // lg:flex lg:items-center justify-center
+      //  ${
+      //   activeTheme.isDarkMode
+      //     ? "bg-darkNavy text-white"
+      //     : "bg-lightGrey text-darkNavy"
+      // }`}
     >
-      <div className="lg:max-h-[960px] lg:w-[1440px]">
+      <div className="lg:max-h-[960px] lg:w-[1440px] mx-auto">
+        {/* <div className="lg:max-h-[960px] lg:w-[1440px]"> */}
         <div
           className="z-[1] relative px-6 py-4 sm:py-14
             lg:py-[clamp(3.5rem,_15vh,_6rem)]a lg:py-0
