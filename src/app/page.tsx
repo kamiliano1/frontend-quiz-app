@@ -27,7 +27,7 @@ export default function Home() {
           lg:px-[clamp(4rem,_9.75vw,_8.75rem)] sm:px-[clamp(1.5rem,_8.4vw,_4rem)]
           lg:grid  lg:gap-x-10 
           lg:grid-cols-[minmax(400px,_453px),_minmax(400px,_564px)] lg:justify-between max-w-[1440px]
-          lg:grid-rows-[clamp(2rem,27vh,252px),_auto]
+          lg:grid-rows-[252px,_auto]
        "
         >
           {gameStatus.isGameStarted ? <QuizPage /> : <WelcomePage />}
