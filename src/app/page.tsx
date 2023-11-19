@@ -25,10 +25,10 @@ export default function Home() {
           className="z-[1] relative px-6 py-4 sm:py-14
           lg:py-0
           lg:px-[clamp(4rem,_9.75vw,_8.75rem)] sm:px-[clamp(1.5rem,_8.4vw,_4rem)]
-          lg:grid  lg:gap-x-10 lg:grid-cols-[minmax(400px,_453px),_minmax(400px,_564px)] lg:justify-between max-w-[1440px]
-          lg:grid-rows-[clamp(2rem,18vh,171px),_auto]s 
-          lg:grid-rows-[clamp(2rem,23.4vh,224px),_auto]s
-          lg:grid-rows-[auto,_auto]"
+          lg:grid  lg:gap-x-10 
+          lg:grid-cols-[minmax(400px,_453px),_minmax(400px,_564px)] lg:justify-between max-w-[1440px]
+          lg:grid-rows-[clamp(2rem,27vh,252px),_auto]
+       "
         >
           {gameStatus.isGameStarted ? <QuizPage /> : <WelcomePage />}
           <BackgroundPattern />
