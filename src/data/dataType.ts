@@ -1,6 +1,6 @@
 import React from "react";
 import { IconType } from "react-icons";
-export type SubjectsType = "HTML" | "CSS" | "JavaScript" | "Accessibility" | "";
+export type SubjectsType = "HTML" | "CSS" | "Javascript" | "Accessibility" | "";
 export type QuizzesType = {
   quizzes: SubjectType[];
 };

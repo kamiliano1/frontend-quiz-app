@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as RadioGroup from "@radix-ui/react-radio-group";
 import { CurrentThemeState } from "@/atoms/themeSwitcherAtom";
 import { AiOutlineCheckCircle } from "react-icons/ai";
@@ -22,6 +22,8 @@ const SingleRadio: React.FC<SingleRadioProps> = ({
   answerLetter,
   activeTheme,
 }) => {
+  const inputReference = useRef<HTMLButtonElement>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const [isHover, setIsHover] = useState(false);
   const isActive = activeRadio === value;
 
@@ -35,6 +37,7 @@ const SingleRadio: React.FC<SingleRadioProps> = ({
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
       onClick={activeAnswer}
+      // ref={isActive ? reference : null}
       className={`grid grid-cols-[40px,_auto,_32px] sm:grid-cols-[56px,_auto] items-center 
       ${!isAnswerSubmitted && "cursor-pointer"} 
       rounded-xl sm:rounded-[1.5rem] text-darkNavy px-3 py-[9.34px] lg:py-[18px] lg:px-5 border-[3px] data-[state=checked]:bg-purple 

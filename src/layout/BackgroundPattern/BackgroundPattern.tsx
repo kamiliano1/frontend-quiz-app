@@ -14,12 +14,12 @@ const BackgroundPattern: React.FC<BackgroundPatternProps> = () => {
   const windowWidth = useWindowWith();
   const activeTheme = useRecoilValue(currentThemeState);
   const cssClass = "absolute top-0 z-[-1] left-0";
-  if (windowWidth < 400) {
+  if (windowWidth < 639) {
     if (activeTheme.isDarkMode) {
       return <PatternBackgroundMobileDark className={cssClass} />;
     }
     return <PatternBackgroundMobileLight className={cssClass} />;
-  } else if (windowWidth < 900) {
+  } else if (windowWidth < 1024) {
     if (activeTheme.isDarkMode) {
       return <PatternBackgroundTabletDark className={cssClass} />;
     }

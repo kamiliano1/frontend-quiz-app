@@ -178,7 +178,7 @@ export const quizData: QuizzesType = {
       ],
     },
     {
-      title: "JavaScript",
+      title: "Javascript",
       icon: {
         icon: RiJavascriptLine,
         color: "text-[rgba(48,_106,_255,_1)]",

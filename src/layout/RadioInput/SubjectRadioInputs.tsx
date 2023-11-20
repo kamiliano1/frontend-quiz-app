@@ -1,14 +1,56 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 // import { quizData } from "@/app/quizData/quizData";
 import { quizData } from "@/data/data";
 import * as RadioGroup from "@radix-ui/react-radio-group";
 import { currentThemeState } from "@/atoms/themeSwitcherAtom";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import SubjectRadio from "./SubjectRadio";
+import { gameStatusState } from "@/atoms/gameStatusAtom";
 type SubjectRadioInputsProps = {};
 
 const SubjectRadioInputs: React.FC<SubjectRadioInputsProps> = () => {
   const activeTheme = useRecoilValue(currentThemeState);
+  const [gameStatus, setGameStatus] = useRecoilState(gameStatusState);
+  const handleKeyPress = useCallback(
+    (e: KeyboardEvent): void => {
+      console.log(e.key, "z poczatkuy");
+
+      const key = e.key;
+      if (key === "a") {
+        setGameStatus((prev) => ({
+          ...prev,
+          subject: quizData.quizzes[0].title,
+          isGameStarted: true,
+        }));
+      }
+      if (key === "b")
+        setGameStatus((prev) => ({
+          ...prev,
+          subject: quizData.quizzes[1].title,
+          isGameStarted: true,
+        }));
+      if (key === "c")
+        setGameStatus((prev) => ({
+          ...prev,
+          subject: quizData.quizzes[2].title,
+          isGameStarted: true,
+        }));
+      if (key === "d")
+        setGameStatus((prev) => ({
+          ...prev,
+          subject: quizData.quizzes[3].title,
+          isGameStarted: true,
+        }));
+    },
+    [setGameStatus]
+  );
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyPress);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [handleKeyPress]);
   const printedSubjects = quizData.quizzes.map((item) => {
     return (
       <SubjectRadio
