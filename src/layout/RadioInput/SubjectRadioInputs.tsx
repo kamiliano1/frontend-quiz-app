@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect } from "react";
-// import { quizData } from "@/app/quizData/quizData";
 import { quizData } from "@/data/data";
 import * as RadioGroup from "@radix-ui/react-radio-group";
 import { currentThemeState } from "@/atoms/themeSwitcherAtom";
@@ -13,8 +12,6 @@ const SubjectRadioInputs: React.FC<SubjectRadioInputsProps> = () => {
   const [gameStatus, setGameStatus] = useRecoilState(gameStatusState);
   const handleKeyPress = useCallback(
     (e: KeyboardEvent): void => {
-      console.log(e.key, "z poczatkuy");
-
       const key = e.key;
       if (key === "a") {
         setGameStatus((prev) => ({

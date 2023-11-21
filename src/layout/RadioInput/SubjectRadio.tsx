@@ -41,6 +41,7 @@ const SubjectRadio: React.FC<SubjectRadioProps> = ({
           `}
     >
       <RadioGroup.Item
+        title={value}
         className={`w-[40px] h-[40px] sm:w-[56px] sm:h-[56px] cursor-pointer after:text-headingXS sm:after:text-headingM flex items-center justify-center 
         //  ${icon.background} 
         bg-opacity-10

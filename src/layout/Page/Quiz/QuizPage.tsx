@@ -1,19 +1,15 @@
-import React, { useEffect, useState } from "react";
-import AnswersRadioInputs from "../../RadioInput/AnswersRadioInputs";
-import { SetterOrUpdater, useRecoilState, useRecoilValue } from "recoil";
 import { GameStatusState, gameStatusState } from "@/atoms/gameStatusAtom";
+import React, { useEffect, useState } from "react";
+import { SetterOrUpdater, useRecoilState, useRecoilValue } from "recoil";
 import ThemeSwitch from "../../ThemeSwitch/ThemeSwitch";
-// import { quizData } from "../../../../public/data/data";
 import {
   CurrentThemeState,
   currentThemeState,
 } from "@/atoms/themeSwitcherAtom";
-import ProgressBar from "../../ProgressBar/ProgressBar";
-import Button from "../../Button/Button";
-import QuizCompleted from "./QuizCompleted";
-import QuizInProgress from "./QuizInProgress";
 import { quizData } from "@/data/data";
 import { SubjectType } from "@/data/dataType";
+import QuizCompleted from "./QuizCompleted";
+import QuizInProgress from "./QuizInProgress";
 type QuizPageProps = {};
 
 export type QuizType = {
@@ -29,7 +25,6 @@ const QuizPage: React.FC<QuizPageProps> = () => {
   const [activeSubjectQuestions, setActiveSubjectQuestions] = useState(
     quizData.quizzes[0]
   );
-  const [zmiana, setZmiana] = useState(false);
   const { color, background } = activeSubjectQuestions.icon;
   useEffect(() => {
     const subjectIndex = quizData.quizzes.findIndex(
@@ -40,9 +35,6 @@ const QuizPage: React.FC<QuizPageProps> = () => {
 
   return (
     <>
-      {/* <button className="absolute" onClick={() => setZmiana((prev) => !prev)}>
-        Zmiana
-      </button> */}
       <div className="flex justify-between items-center pb-4 lg:pb-0 col-span-2">
         <div className="flex gap-x-4 sm:gap-x-6 items-center">
           <div
@@ -53,7 +45,6 @@ const QuizPage: React.FC<QuizPageProps> = () => {
           </div>
           <p
             className={`text-headingXS sm:text-headingS
-
             ${activeTheme.isDarkMode ? "text-white" : "text-darkNavy"}
 `}
           >
@@ -62,8 +53,7 @@ const QuizPage: React.FC<QuizPageProps> = () => {
         </div>
         <ThemeSwitch />
       </div>
-      {/* {gameStatus.isGameFinished ? ( */}
-      {zmiana ? (
+      {gameStatus.isGameFinished ? (
         <QuizCompleted
           setGameStatus={setGameStatus}
           gameStatus={gameStatus}

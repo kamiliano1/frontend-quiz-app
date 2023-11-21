@@ -1,15 +1,25 @@
 "use client";
 import { gameStatusState } from "@/atoms/gameStatusAtom";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { currentThemeState } from "@/atoms/themeSwitcherAtom";
-
 import BackgroundPattern from "@/layout/BackgroundPattern/BackgroundPattern";
 import WelcomePage from "@/layout/Page/WelcomePage";
 import QuizPage from "@/layout/Page/Quiz/QuizPage";
-import { useState } from "react";
+import { useEffect } from "react";
 export default function Home() {
   const [gameStatus, setGameStatus] = useRecoilState(gameStatusState);
-  const activeTheme = useRecoilValue(currentThemeState);
+  const [activeTheme, setActiveTheme] = useRecoilState(currentThemeState);
+  useEffect(() => {
+    const submitKeyboard = (e: KeyboardEvent): void => {
+      const key = e.key;
+      if (key === "q")
+        setActiveTheme((prev) => ({ isDarkMode: !prev.isDarkMode }));
+    };
+    window.addEventListener("keydown", submitKeyboard);
+    return () => {
+      window.removeEventListener("keydown", submitKeyboard);
+    };
+  }, [setActiveTheme]);
   return (
     <main
       className={`relative overflow-x-hidden sm:pb-52 lg:pb-0 h-[100vh]

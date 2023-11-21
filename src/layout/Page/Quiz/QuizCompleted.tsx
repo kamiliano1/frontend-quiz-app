@@ -1,5 +1,5 @@
 import Button from "@/layout/Button/Button";
-import React from "react";
+import React, { useEffect } from "react";
 import { QuizType } from "./QuizPage";
 
 const QuizCompleted: React.FC<QuizType> = ({
@@ -9,6 +9,18 @@ const QuizCompleted: React.FC<QuizType> = ({
   setGameStatus,
 }) => {
   const { color, background } = activeSubjectQuestions.icon;
+
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent): void => {
+      const key = e.key;
+      if (key === "Enter") resetGame();
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  });
   const resetGame = () => {
     setGameStatus!({
       subject: "",
