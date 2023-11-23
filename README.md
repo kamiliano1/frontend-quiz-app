@@ -1,36 +1,137 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Frontend Mentor - Frontend quiz app solution
 
-## Getting Started
+This is a solution to the [Frontend quiz app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/frontend-quiz-app-BE7xkzXQnU). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-First, run the development server:
+## Table of contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- [Frontend Mentor - Frontend quiz app solution](#frontend-mentor---frontend-quiz-app-solution)
+  - [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+    - [The challenge](#the-challenge)
+    - [Screenshot](#screenshot)
+    - [Links](#links)
+    - [Built with](#built-with)
+    - [What I learned](#what-i-learned)
+      - [Keyboard navigation](#keyboard-navigation)
+      - [Radix-UI](#radix-ui)
+      - [React Recoil](#react-recoil)
+    - [Continued development](#continued-development)
+  - [Author](#author)
+
+## Overview
+
+### The challenge
+
+Users should be able to:
+
+- Select a quiz subject
+- Select a single answer from each question from a choice of four
+- See an error message when trying to submit an answer without making a selection
+- See if they have made a correct or incorrect choice when they submit an answer
+- Move on to the next question after seeing the question result
+- See a completed state with the score after the final question
+- Play again to choose another subject
+- View the optimal layout for the interface depending on their device's screen size
+- See hover and focus states for all interactive elements on the page
+- Navigate the entire app only using their keyboard
+- **Bonus**: Change the app's theme between light and dark
+
+### Screenshot
+
+![Frontend quiz app screenshot](./screenshot.jpeg)
+
+### Links
+
+- Solution URL: [(https://github.com/kamiliano1/frontend-quiz-app)](https://github.com/kamiliano1/frontend-quiz-app)
+- Live Site URL: [https://frontend-quiz-app-alpha.vercel.app/](https://frontend-quiz-app-alpha.vercel.app/)
+
+### Built with
+
+- Semantic HTML5 markup
+- CSS custom properties
+- FlexBox
+- CSS Grid
+- Mobile-first workflow
+- [React](https://reactjs.org/) - JS library
+- [Next.js](https://nextjs.org/) - React framework
+- [React Recoil](https://recoiljs.org/)
+- [React hooks form](https://react-hook-form.com/)
+- [radix-ui](https://www.radix-ui.com/)
+
+### What I learned
+
+#### Keyboard navigation
+
+On this project I first tried to implement fully keyboard navigate. I am not sure if there is a better way to implement this feature.
+
+```js
+useEffect(() => {
+  const submitKeyboard = (e: KeyboardEvent): void => {
+    const key = e.key;
+    if (key === "q")
+      setActiveTheme((prev) => ({ isDarkMode: !prev.isDarkMode }));
+  };
+  window.addEventListener("keydown", submitKeyboard);
+  return () => {
+    window.removeEventListener("keydown", submitKeyboard);
+  };
+}, [setActiveTheme]);
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Keyboard navigation:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Description                                            | Button |
+| ------------------------------------------------------ | ------ |
+| Toggle Dark / Light Mode                               | q      |
+| Answer A / First category                              | a      |
+| Answer B / Second category                             | b      |
+| Answer C / Third category                              | c      |
+| Answer D / Fourth category                             | d      |
+| Process to the next question / Restart after quiz ends | Enter  |
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+#### Radix-UI
 
-## Learn More
+To improve accessibility:
 
-To learn more about Next.js, take a look at the following resources:
+- radix-ui/react-switch light and dark mode switcher
+- radix-ui/react-progress progress bar
+- radix-ui/react-radio-group radio input for the answers and category
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### React Recoil
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+To manage the state I've used
 
-## Deploy on Vercel
+```js
+gameStatusAtom.ts;
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+It keeps all the game status information.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```ts
+subject: SubjectsType;
+questionNumber: number;
+isGameStarted: boolean;
+isGameFinished: boolean;
+userScore: number;
+```
+
+It track which mode is currently activated.
+
+```js
+themeSwitcherAtom.ts;
+```
+
+```ts
+isDarkMode: boolean;
+```
+
+### Continued development
+
+- Right now all questions and answers are in the same order every time you start the quiz. Further development might include reorder questions and answers.
+- Increase the quantity of questions.
+- Implement the timer, how long it takes to solve the quiz.
+
+## Author
+
+- Website - [Kamil Szymon](https://github.com/kamiliano1)
+- Frontend Mentor - [@kamiliano1](https://www.frontendmentor.io/profile/kamiliano1)

@@ -24,25 +24,12 @@ const AnswersRadioInputs: React.FC<AnswersRadioInputsProps> = ({
   const [activeRadio, setActiveRadio] = useState("");
   const [checkAnswer, setCheckAnswer] = useState(false);
   const [isError, setIsError] = useState(false);
+
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent): void => {
       const submitKeyboard = () => {
         if (!activeRadio) {
           setIsError(true);
-          return;
-        }
-        if (checkAnswer) {
-          if (activeRadio === question.answer)
-            setGameStatus((prev) => ({
-              ...prev,
-              userScore: gameStatus.userScore + 1,
-            }));
-          gameStatus.questionNumber === 9
-            ? setGameStatus((prev) => ({ ...prev, isGameFinished: true }))
-            : setGameStatus((prev) => ({
-                ...prev,
-                questionNumber: gameStatus.questionNumber + 1,
-              }));
           return;
         }
         setCheckAnswer(true);
@@ -95,7 +82,6 @@ const AnswersRadioInputs: React.FC<AnswersRadioInputsProps> = ({
     gameStatus.userScore,
     question.answer,
     question.options,
-
     setGameStatus,
   ]);
 
