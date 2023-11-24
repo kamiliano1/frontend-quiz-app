@@ -1,10 +1,9 @@
 import { gameStatusState } from "@/atoms/gameStatusAtom";
-import { currentThemeState } from "@/atoms/themeSwitcherAtom";
 import { QuestionType } from "@/data/dataType";
 import * as RadioGroup from "@radix-ui/react-radio-group";
 import React, { useEffect, useRef, useState } from "react";
 import { VscError } from "react-icons/vsc";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import Button from "../Button/Button";
 import SingleRadio from "./SingleRadio";
 type AnswersRadioInputsProps = { question: QuestionType };
@@ -19,7 +18,6 @@ const AnswersRadioInputs: React.FC<AnswersRadioInputsProps> = ({
   question,
 }) => {
   const radioInputRef = useRef<HTMLInputElement>(null);
-  const activeTheme = useRecoilValue(currentThemeState);
   const [gameStatus, setGameStatus] = useRecoilState(gameStatusState);
   const [activeRadio, setActiveRadio] = useState("");
   const [checkAnswer, setCheckAnswer] = useState(false);
@@ -127,7 +125,7 @@ const AnswersRadioInputs: React.FC<AnswersRadioInputsProps> = ({
         isCorrectAnswer={isCorrect}
         isAnswerSubmitted={checkAnswer}
         answerLetter={answerLetters[id]}
-        activeTheme={activeTheme}
+        activeTheme={gameStatus.isDarkMode}
       />
     );
   });
@@ -149,7 +147,7 @@ const AnswersRadioInputs: React.FC<AnswersRadioInputsProps> = ({
           <VscError className="text-[2rem] text-red" />
           <p
             className={`text-headingXS font-normal ${
-              activeTheme.isDarkMode ? "text-white" : "text-red"
+              gameStatus.isDarkMode ? "text-white" : "text-red"
             }  ml-2`}
           >
             Please select an answer

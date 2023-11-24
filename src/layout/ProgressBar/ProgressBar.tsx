@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import { gameStatusState } from "@/atoms/gameStatusAtom";
 import * as Progress from "@radix-ui/react-progress";
-import { currentThemeState } from "@/atoms/themeSwitcherAtom";
+import React from "react";
 import { useRecoilValue } from "recoil";
 type ProgressBarProps = { progress: number };
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ progress }) => {
-  const activeTheme = useRecoilValue(currentThemeState);
+  const gameStatus = useRecoilValue(gameStatusState);
   return (
     <div
       className={`rounded-full p-1 mb-10 sm:mb-16 ${
-        activeTheme.isDarkMode ? "bg-navy" : "bg-white"
+        gameStatus.isDarkMode ? "bg-navy" : "bg-white"
       }`}
     >
       <Progress.Root

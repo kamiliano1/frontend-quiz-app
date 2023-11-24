@@ -6,25 +6,25 @@ import { PatternBackgroundTabletLight } from "../../../public/images/pattern-bac
 import { PatternBackgroundTabletDark } from "../../../public/images/pattern-background-tablet-dark";
 import { PatternBackgroundMobileLight } from "../../../public/images/pattern-background-mobile-light";
 import { PatternBackgroundMobileDark } from "../../../public/images/pattern-background-mobile-dark";
-import { currentThemeState } from "@/atoms/themeSwitcherAtom";
 import { useRecoilValue } from "recoil";
+import { gameStatusState } from "@/atoms/gameStatusAtom";
 type BackgroundPatternProps = {};
 
 const BackgroundPattern: React.FC<BackgroundPatternProps> = () => {
   const windowWidth = useWindowWith();
-  const activeTheme = useRecoilValue(currentThemeState);
+  const gameStatus = useRecoilValue(gameStatusState);
   const cssClass = "absolute top-0 z-[-1] left-0";
   if (windowWidth < 639) {
-    if (activeTheme.isDarkMode) {
+    if (gameStatus.isDarkMode) {
       return <PatternBackgroundMobileDark className={cssClass} />;
     }
     return <PatternBackgroundMobileLight className={cssClass} />;
   } else if (windowWidth < 1024) {
-    if (activeTheme.isDarkMode) {
+    if (gameStatus.isDarkMode) {
       return <PatternBackgroundTabletDark className={cssClass} />;
     }
     return <PatternBackgroundTabletLight className={cssClass} />;
-  } else if (activeTheme.isDarkMode)
+  } else if (gameStatus.isDarkMode)
     return <PatternBackgroundDesktopDark className={cssClass} />;
   return <PatternBackgroundDesktopLight className={cssClass} />;
 };

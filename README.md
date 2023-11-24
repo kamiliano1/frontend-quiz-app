@@ -69,13 +69,13 @@ useEffect(() => {
   const submitKeyboard = (e: KeyboardEvent): void => {
     const key = e.key;
     if (key === "q")
-      setActiveTheme((prev) => ({ isDarkMode: !prev.isDarkMode }));
+      setGameStatus((prev) => ({ ...prev, isDarkMode: !prev.isDarkMode }));
   };
   window.addEventListener("keydown", submitKeyboard);
   return () => {
     window.removeEventListener("keydown", submitKeyboard);
   };
-}, [setActiveTheme]);
+}, [setGameStatus]);
 ```
 
 Keyboard navigation:
@@ -113,15 +113,6 @@ questionNumber: number;
 isGameStarted: boolean;
 isGameFinished: boolean;
 userScore: number;
-```
-
-It track which mode is currently activated.
-
-```js
-themeSwitcherAtom.ts;
-```
-
-```ts
 isDarkMode: boolean;
 ```
 

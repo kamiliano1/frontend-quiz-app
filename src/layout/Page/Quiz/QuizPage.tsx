@@ -1,11 +1,8 @@
 import { GameStatusState, gameStatusState } from "@/atoms/gameStatusAtom";
 import React, { useEffect, useState } from "react";
-import { SetterOrUpdater, useRecoilState, useRecoilValue } from "recoil";
+import { SetterOrUpdater, useRecoilState } from "recoil";
 import ThemeSwitch from "../../ThemeSwitch/ThemeSwitch";
-import {
-  CurrentThemeState,
-  currentThemeState,
-} from "@/atoms/themeSwitcherAtom";
+
 import { quizData } from "@/data/data";
 import { SubjectType } from "@/data/dataType";
 import QuizCompleted from "./QuizCompleted";
@@ -15,12 +12,11 @@ type QuizPageProps = {};
 export type QuizType = {
   gameStatus: GameStatusState;
   activeSubjectQuestions: SubjectType;
-  activeTheme: CurrentThemeState;
+  activeTheme: boolean;
   setGameStatus?: SetterOrUpdater<GameStatusState>;
 };
 
 const QuizPage: React.FC<QuizPageProps> = () => {
-  const activeTheme = useRecoilValue(currentThemeState);
   const [gameStatus, setGameStatus] = useRecoilState(gameStatusState);
   const [activeSubjectQuestions, setActiveSubjectQuestions] = useState(
     quizData.quizzes[0]
@@ -45,7 +41,7 @@ const QuizPage: React.FC<QuizPageProps> = () => {
           </div>
           <p
             className={`text-headingXS sm:text-headingS
-            ${activeTheme.isDarkMode ? "text-white" : "text-darkNavy"}
+            ${gameStatus.isDarkMode ? "text-white" : "text-darkNavy"}
 `}
           >
             {gameStatus.subject}
@@ -58,13 +54,13 @@ const QuizPage: React.FC<QuizPageProps> = () => {
           setGameStatus={setGameStatus}
           gameStatus={gameStatus}
           activeSubjectQuestions={activeSubjectQuestions}
-          activeTheme={activeTheme}
+          activeTheme={gameStatus.isDarkMode}
         />
       ) : (
         <QuizInProgress
           gameStatus={gameStatus}
           activeSubjectQuestions={activeSubjectQuestions}
-          activeTheme={activeTheme}
+          activeTheme={gameStatus.isDarkMode}
         />
       )}
     </>

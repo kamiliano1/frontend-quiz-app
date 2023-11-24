@@ -7,6 +7,7 @@ export type GameStatusState = {
   isGameStarted: boolean;
   isGameFinished: boolean;
   userScore: number;
+  isDarkMode: boolean;
 };
 
 const defaultGameStatusState: GameStatusState = {
@@ -15,6 +16,7 @@ const defaultGameStatusState: GameStatusState = {
   isGameStarted: false,
   isGameFinished: false,
   userScore: 0,
+  isDarkMode: true,
 };
 
 export const gameStatusState = atom<GameStatusState>({

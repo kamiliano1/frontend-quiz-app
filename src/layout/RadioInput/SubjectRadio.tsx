@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import * as RadioGroup from "@radix-ui/react-radio-group";
-import { CurrentThemeState } from "@/atoms/themeSwitcherAtom";
 import { gameStatusState } from "@/atoms/gameStatusAtom";
 import { useRecoilState } from "recoil";
 import { IconInterface, SubjectsType } from "@/data/dataType";
@@ -8,7 +7,7 @@ import { IconInterface, SubjectsType } from "@/data/dataType";
 type SubjectRadioProps = {
   value: SubjectsType;
   icon: IconInterface;
-  activeTheme: CurrentThemeState;
+  activeTheme: boolean;
 };
 const SubjectRadio: React.FC<SubjectRadioProps> = ({
   value,
@@ -34,7 +33,7 @@ const SubjectRadio: React.FC<SubjectRadioProps> = ({
       onClick={startQuiz}
       className={`flex items-center cursor-pointer rounded-xl sm:rounded-[1.5rem] text-darkNavy px-3 py-[9.34px] lg:py-[1.08375rem] lg:px-5 border-[3px] data-[state=checked]:bg-purple 
         ${
-          activeTheme.isDarkMode
+          activeTheme
             ? "bg-navy text-white border-navy"
             : "bg-white text-darkNavy border-white"
         }

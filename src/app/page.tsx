@@ -1,31 +1,29 @@
 "use client";
 import { gameStatusState } from "@/atoms/gameStatusAtom";
 import { useRecoilState } from "recoil";
-import { currentThemeState } from "@/atoms/themeSwitcherAtom";
 import BackgroundPattern from "@/layout/BackgroundPattern/BackgroundPattern";
 import WelcomePage from "@/layout/Page/WelcomePage";
 import QuizPage from "@/layout/Page/Quiz/QuizPage";
 import { useEffect } from "react";
 export default function Home() {
   const [gameStatus, setGameStatus] = useRecoilState(gameStatusState);
-  const [activeTheme, setActiveTheme] = useRecoilState(currentThemeState);
   useEffect(() => {
     const submitKeyboard = (e: KeyboardEvent): void => {
       const key = e.key;
       if (key === "q")
-        setActiveTheme((prev) => ({ isDarkMode: !prev.isDarkMode }));
+        setGameStatus((prev) => ({ ...prev, isDarkMode: !prev.isDarkMode }));
     };
     window.addEventListener("keydown", submitKeyboard);
     return () => {
       window.removeEventListener("keydown", submitKeyboard);
     };
-  }, [setActiveTheme]);
+  }, [setGameStatus]);
   return (
     <main
       className={`relative overflow-x-hidden sm:pb-52 lg:pb-0 h-[100vh]
       lg:flex lg:items-center lg:justify-center
        ${
-         activeTheme.isDarkMode
+         gameStatus.isDarkMode
            ? "bg-darkNavy text-white"
            : "bg-lightGrey text-darkNavy"
        }`}

@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as RadioGroup from "@radix-ui/react-radio-group";
-import { CurrentThemeState } from "@/atoms/themeSwitcherAtom";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { VscError } from "react-icons/vsc";
 type SingleRadioProps = {
@@ -10,7 +9,7 @@ type SingleRadioProps = {
   isCorrectAnswer: boolean;
   isAnswerSubmitted: boolean;
   answerLetter: string;
-  activeTheme: CurrentThemeState;
+  activeTheme: boolean;
 };
 
 const SingleRadio: React.FC<SingleRadioProps> = ({
@@ -31,14 +30,14 @@ const SingleRadio: React.FC<SingleRadioProps> = ({
     }
   };
   useEffect(() => {
-    if (activeTheme.isDarkMode) setRadioBorder("border-navy");
-    if (!activeTheme.isDarkMode) setRadioBorder("border-white");
+    if (activeTheme) setRadioBorder("border-navy");
+    if (!activeTheme) setRadioBorder("border-white");
     if (isActive && !isAnswerSubmitted) setRadioBorder("border-purple");
     if (isAnswerSubmitted && isCorrectAnswer && isActive)
       setRadioBorder("border-[rgba(38,_215,_130,_1)]");
     if (isAnswerSubmitted && !isCorrectAnswer && isActive)
       setRadioBorder("border-red");
-  }, [activeTheme.isDarkMode, isActive, isAnswerSubmitted, isCorrectAnswer]);
+  }, [activeTheme, isActive, isAnswerSubmitted, isCorrectAnswer]);
   return (
     <div
       onMouseEnter={() => setIsHover(true)}
@@ -48,11 +47,7 @@ const SingleRadio: React.FC<SingleRadioProps> = ({
       ${!isAnswerSubmitted && "cursor-pointer"} 
       rounded-xl sm:rounded-[1.5rem] text-darkNavy px-3 py-[9.34px] lg:py-[18px] lg:px-5 border-[3px] data-[state=checked]:bg-purple 
       ${radioBorder}
-        ${
-          activeTheme.isDarkMode
-            ? "bg-navy text-white"
-            : "bg-white text-darkNavy"
-        }
+        ${activeTheme ? "bg-navy text-white" : "bg-white text-darkNavy"}
           `}
     >
       <RadioGroup.Item

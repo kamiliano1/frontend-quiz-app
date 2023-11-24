@@ -1,13 +1,13 @@
 import React from "react";
 import SubjectRadioInputs from "@/layout/RadioInput/SubjectRadioInputs";
-import { currentThemeState } from "@/atoms/themeSwitcherAtom";
 import { useRecoilValue } from "recoil";
 import ThemeSwitch from "../ThemeSwitch/ThemeSwitch";
+import { gameStatusState } from "@/atoms/gameStatusAtom";
 
 type WelcomePageProps = {};
 
 const WelcomePage: React.FC<WelcomePageProps> = () => {
-  const activeTheme = useRecoilValue(currentThemeState);
+  const gameStatus = useRecoilValue(gameStatusState);
   return (
     <>
       <div className="col-span-2 my-auto">
@@ -22,7 +22,7 @@ const WelcomePage: React.FC<WelcomePageProps> = () => {
         </h1>
         <p
           className={`mt-4 lg:mt-12 mb-10 sm:mb-16 text-bodySMobile sm:text-bodyS italic text-greyNavy
-          ${activeTheme.isDarkMode ? "text-lightBluish" : "text-darkNavy"}
+          ${gameStatus.isDarkMode ? "text-lightBluish" : "text-darkNavy"}
           `}
         >
           Pick a subject to get started.

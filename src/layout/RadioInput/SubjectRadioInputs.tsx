@@ -1,14 +1,12 @@
 import React, { useCallback, useEffect } from "react";
 import { quizData } from "@/data/data";
 import * as RadioGroup from "@radix-ui/react-radio-group";
-import { currentThemeState } from "@/atoms/themeSwitcherAtom";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import SubjectRadio from "./SubjectRadio";
 import { gameStatusState } from "@/atoms/gameStatusAtom";
 type SubjectRadioInputsProps = {};
 
 const SubjectRadioInputs: React.FC<SubjectRadioInputsProps> = () => {
-  const activeTheme = useRecoilValue(currentThemeState);
   const [gameStatus, setGameStatus] = useRecoilState(gameStatusState);
   const handleKeyPress = useCallback(
     (e: KeyboardEvent): void => {
@@ -54,7 +52,7 @@ const SubjectRadioInputs: React.FC<SubjectRadioInputsProps> = () => {
         key={item.title}
         value={item.title}
         icon={item.icon}
-        activeTheme={activeTheme}
+        activeTheme={gameStatus.isDarkMode}
       />
     );
   });

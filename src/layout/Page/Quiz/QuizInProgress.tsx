@@ -18,14 +18,14 @@ const QuizInProgress: React.FC<QuizType> = ({
       <div className="col-start-1 row-start-2 pt-8 lg:pt-0 flex flex-col">
         <p
           className={`text-bodySMobile sm:text-bodyS mb-3 sm:mb-[1.6875rem]
-  ${activeTheme.isDarkMode ? "text-lightBluish" : "text-greyNavy"}
+  ${activeTheme ? "text-lightBluish" : "text-greyNavy"}
   `}
         >
           Question {questionNumber + 1} of {subjectQuestionQuantity}
         </p>
         <h3
           className={` text-headingMMobile sm:text-headingM mb-6 sm:mb-10 lg:mb-40
-    ${activeTheme.isDarkMode ? "text-white" : "text-darkNavy"}`}
+    ${activeTheme ? "text-white" : "text-darkNavy"}`}
         >
           {activatedQuestion}
         </h3>
